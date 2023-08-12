@@ -38,6 +38,7 @@ body {
 }
 
 #footer_outer {
+display:block;
 }
 
 #footer_inner {
@@ -54,60 +55,62 @@ body {
 	position: absolute;
 	top:18px;
 	width: 297px;
-	height:75px;
+	height:100px;
 }
 
 #header_inner h1 a {
 	display: block;
 	width: 297px;
-	height:75px;
+	height:100%;
 	background: url('../images/header_logo_bg.png');
 	text-indent: -5000em;
 }
 
-#main_navigation {
+.menu {
 	list-style: none;
 	position: absolute;
 	right:-18px;
 	top:18px;
 }
 
-#main_navigation li {
+.menu li {
 	float: left;
+	list-style: none;
 }
 
-#main_navigation li a, button {
+.menu li a, button {
 	display: block;
 	text-decoration: none;
-	background: #f08818;
+	background: #ccc;
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
 	padding: 9px 13px 8px;
-	-webkit-border-radius : 9px;
-	-moz-border-radius : 9px;
 	margin-left: 9px;
 	border: 0;
 	cursor: pointer;
 	text-transform: uppercase;
 	font-size: 11px;
 	letter-spacing: 0.5px;
-	-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-  	-moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 
 }
 
-#main_navigation li a:hover, #main_navigation li a:focus, button:hover, button:focus {
-	background: #bd6b13;
+.menu li a:hover, .menu li a:focus, button:hover, button:focus {
+	background: #333;
 }
 
-#main_navigation li a:active, button:active {
-	background: #bc161d;
+.menu li a:active, button:active {
+	background: #000;
+}
+
+.menu {
+	float: right;
+	width:auto;
 }
 
 #main_content {
-	float: left;
-	width:507px;
+width:507px;
+float:left;
 }
 
 /* Widgets */
@@ -156,6 +159,11 @@ body {
 
 #meta_content #widgets #twitter_update_list li {
 	padding: 0px 0px;
+}
+
+h2.widgettitle {
+margin-bottom: 20px;
+
 }
 
 /* Custom Page CSS */

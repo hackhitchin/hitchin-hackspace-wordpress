@@ -1,0 +1,22 @@
+#meta_content ul#widgets #mc_signup li {
+margin: 0;
+padding:0;
+}
+
+#meta_content ul#widgets #mc_signup label {
+display: block;
+}
+
+#meta_content ul#widgets #mc_signup #mc-indicates-required,
+#meta_content ul#widgets #mc_signup #mc_subheader {
+margin-bottom: 10px;
+}
+
+#meta_content ul#widgets #mc_signup ul.mc_list label {
+display: inline;
+}
+
+#meta_content ul#widgets #mc_signup input[type=text] {
+border: 1px solid #ccc;
+width: 98%;
+}

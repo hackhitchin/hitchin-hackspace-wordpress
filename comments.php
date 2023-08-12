@@ -1,3 +1,4 @@
+<!--  (comments.php line 0)-->
 <?php // Do not delete these lines
 	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
 		die ('Please do not load this page directly. Thanks!');
@@ -17,7 +18,7 @@
 	$oddcomment = 'class="alt" ';
 ?>
 
-<!-- You can start editing here. -->
+<!-- You can start editing here. (comments.php line 20)-->
 
 <div class="comment_wrap">
 

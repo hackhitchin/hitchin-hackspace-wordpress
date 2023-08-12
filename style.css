@@ -1,11 +1,22 @@
 /*
-Theme Name: Bristol Hack Space
-Theme URI: http://stefangoodchild.com
+Theme Name: Hack Hitchin
+Theme URI: http://hackhitchin.org.uk
 Version: 1 
-Author: Stefan Goodchild
-Author URI: http://stefangoodchild.com
+Author: Rob Berwick
+Author URI: http://hackhitchin.org.uk
 */
 
 @import "style/css/reset.css";
 @import "style/css/typography.css";
 @import "style/css/layout.css";
+@import "style/css/mailchimp.css";
+
+/** MT => Mark Thompson, mark@artificetech.com */
+/** MT 08/08/23 Hacking around - remove sidebar (that used to contain the Twitter feed) */
+#main_content {
+	width: unset;
+}
+
+#main_content > .post {
+	width: unset;
+}
