@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Deploy hitchin-hackspace-wordpress",
+            "type": "shell",
+            "command": "rsync",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "args": [
+                "--verbose",
+                "--partial",
+                "--progress",
+                "--recursive",
+                "--delete",
+                "--exclude", ".git/",
+                "--exclude", ".gitignore",
+                "--exclude", ".vscode/",
+                "--exclude", "vendor",
+                "-p", "--chmod=Dug=rwx,Fug=rw,Do=rx,Fo=r",
+                "./",
+                "${config:deploy.target}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
