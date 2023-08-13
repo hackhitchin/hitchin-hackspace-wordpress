@@ -10,13 +10,3 @@ Author URI: http://hackhitchin.org.uk
 @import "style/css/typography.css";
 @import "style/css/layout.css";
 @import "style/css/mailchimp.css";
-
-/** MT => Mark Thompson, mark@artificetech.com */
-/** MT 08/08/23 Hacking around - remove sidebar (that used to contain the Twitter feed) */
-#main_content {
-	width: unset;
-}
-
-#main_content > .post {
-	width: unset;
-}

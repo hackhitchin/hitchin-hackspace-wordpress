@@ -18,45 +18,24 @@ body {
 	background: white;
 }
 
-#header_inner, #content_inner, #footer_inner {
-	width: 840px;
+.inner {
+	max-width: 840px;
 	margin: 0 auto;
-	overflow: visible;
 }
 
-#header_outer {
-}
-
-#header_inner {
-}
-
-#content_outer, #content_inner {
-}
-
-#content_inner {
+article .inner {
 	padding: 36px 0;
 }
 
-#footer_outer {
-display:block;
+footer {
+	background: #eee;
 }
 
-#footer_inner {
-	padding-top:26px;
+footer .inner {
+	padding-top: 26px;
 }
 
 /* Main Header + Nav */
-
-#header_inner {
-	height: 100px;
-}
-
-#header_inner h1 {
-	position: absolute;
-	top:18px;
-	width: 297px;
-	height:100px;
-}
 
 #header_inner h1 a {
 	display: block;
@@ -101,16 +80,6 @@ display:block;
 
 .menu li a:active, button:active {
 	background: #000;
-}
-
-.menu {
-	float: right;
-	width:auto;
-}
-
-#main_content {
-width:507px;
-float:left;
 }
 
 /* Widgets */

@@ -1,8 +1,7 @@
-<div id="meta_content">
+<?php if (is_active_sidebar(1)) { ?>
+	<div id="meta_content">
 		<ul id="widgets">
-		<?php 
-			if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) :
-			endif; 
-		?>
+			<?php dynamic_sidebar(); ?>
 		</ul>
-</div>
+	</div>
+<?php }

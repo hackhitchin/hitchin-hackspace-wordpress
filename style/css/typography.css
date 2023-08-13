@@ -53,7 +53,5 @@ button {font-family: inherit; }
 a:focus, a:hover {color:#000;text-decoration:underline;}
 a {color:#999;text-decoration:underline;}
 address {color:#eee;}
-#footer_inner {padding-bottom:13px;}
-#footer_outer {background:#666;}
 .footer_links {color: lightgray;}
 .footer_link {color: white;}

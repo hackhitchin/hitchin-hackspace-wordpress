@@ -1,7 +1,7 @@
-<span class="reset"></span></div>
-		</div>
-		<div id="footer_outer">
-			<div id="footer_inner">
+			</div>
+		</article>
+		<footer>
+			<div class="inner">
 			<?php if (is_page() || is_single()) edit_post_link('Edit this page', '<p class="edit_page_link">', '</p>'); ?>
 				<!-- <p class="footer_links">Hosted by <a class= "footer_link" href='https://mythic-beasts.com'>Mythic Beasts</a></p> -->
 				<!-- <p class="footer_links">Hosted by <a href='https://mythic-beasts.com'><img src="wp-content/uploads/2023/05/Mythic_Beasts_logo.png" alt="Mythic Beasts Logo" style="width:120px;height:54px;"></a></p> -->
@@ -15,7 +15,7 @@
                       </tr>
                </table>
 			</div>
-		</div>
-	<?php wp_footer(); ?>
+		</footer>
+		<?php wp_footer(); ?>
 	</body>
 </html>

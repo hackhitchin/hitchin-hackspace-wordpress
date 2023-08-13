@@ -20,30 +20,21 @@
 				}
 			?>
 		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	    <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
 		<?php if(is_search()) { ?>
-		<meta name="robots" content="noindex, nofollow" /> 
-	    <?php }?>
+			<meta name="robots" content="noindex, nofollow" /> 
+	    <?php } ?>
 	    <link rel="icon" href="/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
-		<!--[if IE]>		
-		<link rel="STYLESHEET" type="text/css" href="http://taxaccounts.co.uk/wp-content/themes/taxaccounts/style/css/ie.css">
-		<![endif]-->	
-		<!--[if IE 6]>
-		<link rel="STYLESHEET" type="text/css" href="http://taxaccounts.co.uk/wp-content/themes/taxaccounts/style/css/ie6.css" />
-		<![endif]-->	
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 		<link rel="pingback" href="<?php //bloginfo('pingback_url'); ?>" />
 		<?php wp_head(); ?>
-		<script type = "text/javascript">
-		</script>
 	</head>
 	<body>
-		<div id="header_outer">
-			<div id="header_inner">
+		<header>
+			<div class="inner">
 				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 				<?php wp_nav_menu( array('menu' => 'Top Navigation','container' => false,'menu_id' => "main_navigation")); ?>
 			</div>
-		</div>
-		<div id="content_outer">
-			<div id="content_inner">
+		</header>
