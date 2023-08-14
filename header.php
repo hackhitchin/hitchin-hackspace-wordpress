@@ -34,7 +34,7 @@
 	<body>
 		<header>
 			<div class="inner">
-				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+				<a class="logo" href="<?php echo get_option('home'); ?>/"><img src="<?= get_stylesheet_directory_uri() ?>/logo.svg" alt="The Hitchin Hackspace logo"></a>
 				<?php wp_nav_menu( array('menu' => 'Top Navigation','container' => false,'menu_id' => "main_navigation")); ?>
 			</div>
 		</header>
