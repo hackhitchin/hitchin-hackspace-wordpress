@@ -9,6 +9,9 @@ div { position:relative }
 body {
 	background: white;
 	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
 }
 
 img, video, iframe, figure {
@@ -23,6 +26,7 @@ img, video, iframe, figure {
 
 article {
 	overflow-wrap: break-word;
+	flex: 1 0 auto;
 }
 
 article .inner {
@@ -194,8 +198,7 @@ header .inner {
 }
 
 h2.widgettitle {
-margin-bottom: 20px;
-
+	margin-bottom: 20px;
 }
 
 /* Custom Page CSS */
