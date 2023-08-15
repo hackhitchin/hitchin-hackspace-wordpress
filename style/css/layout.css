@@ -104,7 +104,7 @@ header .inner {
 	justify-content: flex-end;
 	margin: 0;
 	padding: 3.5em 0 0 0;
-	gap: 1em;
+	gap: 0.75em;
 }
 
 .menu li a, button {
@@ -135,6 +135,18 @@ header .inner {
 	position: relative;
 }
 
+.menu li.menu-item-has-children > a {
+	position: relative;
+	padding-right: 3em;
+}
+
+.menu-item-has-children > a::after {
+	content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 320 512'%3e%3c!--! Font Awesome Free 6.4.2 by %40fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3e%3cpath fill='white' d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3e%3c/svg%3e");
+	position: absolute;
+	right: 1em;
+	top: 30%;
+}
+
 .sub-menu {
 	position: absolute;
 	display: none;
@@ -142,6 +154,7 @@ header .inner {
 	list-style: none;
     right: 0;
     margin: 0;
+	z-index: 10;
 }
 
 .menu-item-has-children:hover .sub-menu, .menu-item-has-children:focus .sub-menu, .menu-item-has-children:focus-within .sub-menu {

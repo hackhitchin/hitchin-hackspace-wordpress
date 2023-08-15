@@ -16,3 +16,11 @@ add_filter('nav_menu_link_attributes', function($atts) {
    $atts['tabindex'] = 0;
    return $atts;
 });
+
+add_shortcode('hh_login_redirect_here', function($attrs) {
+   $redirect_to = get_permalink() ?: '';
+
+   $link = wp_login_url($redirect_to);
+
+   return "<a class=\"login-link\" href=\"$link\">Log In</a>";
+});
