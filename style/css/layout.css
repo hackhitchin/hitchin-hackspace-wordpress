@@ -11,7 +11,7 @@ body {
 	margin: 0;
 }
 
-img, video, iframe {
+img, video, iframe, figure {
 	max-width: 100%;
 }
 
@@ -202,38 +202,30 @@ margin-bottom: 20px;
 
 /* Custom Page CSS */
 
-.post {
-	width: 507px;
-	margin-bottom: 36px;
-}
-
 .post .post_header {
 	background: #999;
-	-webkit-border-radius : 6px;
-	-moz-border-radius : 6px;
-	width: 507px;
-	overflow: auto;
+	border-radius: 6px;
+	width: 100%;
+	overflow: hidden;
 	font-weight: bold;
-	margin:0 0 24px 0;
+	margin: 0 0 2em 0;
+	display: flex;
+	align-items: center;
 }
 
 .post .post_header h2 {
-	float: left;
-	margin:0;
-	padding:0;
+	margin: 0;
+	flex: 1 1 auto;
 }
 
 .post .post_header h2 a {
 	display: block;
-	background: #777;
-	padding: 9px 18px 11px;
-	margin:0;
-	width: 352px;
-	-webkit-border-radius : 6px;
-	-moz-border-radius : 6px 0 0 6px;
 	font-size: 18px;
 	text-decoration: none;
 	color: #eee;
+	background: #777;
+	border-radius: 6px;
+	padding: 1em;
 }
 
 .post .post_header h2 a:hover, .post .post_header h2 a:focus {
@@ -241,12 +233,16 @@ margin-bottom: 20px;
 	color: white;
 }
 
+/** Some post content has explicit widths set on it. */
+.post div {
+	max-width: 100%;
+}
 
 .post .post_header p {
-	float: right;
+	flex: 0 1 auto;
 	color: #ddd;
 	text-transform: uppercase;
-	padding: 15px 18px 0 0;
+	padding: 1em;
 	margin: 0;
 }
 
@@ -263,8 +259,6 @@ margin-bottom: 20px;
 	width:467px;
 }
 
-
-
 .vimeo {
 	padding: 18px;
 	-webkit-border-radius : 6px;
@@ -274,22 +268,20 @@ margin-bottom: 20px;
 }
 
 .prevnext {
-	width: 507px;
-	overflow: auto;
-	padding: 18px 0;
-	-webkit-border-radius : 6px;
-	-moz-border-radius : 6px;
+	clear: both;
+    display: flex;
+    width: unset;
+    justify-content: space-between;
+	padding: 1.5em 0;
+	border-radius: 6px;
 	background: #ddd;
-	margin: 0 0 18px 0;	
+	margin: 0 0 1.5em 0;	
 	list-style: none;
 }
 
 .prevnext a {
-	padding:18px;
+	padding: 1.5em;
 }
-
-.prevnext .prev {float: left;}
-.prevnext .next {float: right;}
 
 /* Comment Section */
 
