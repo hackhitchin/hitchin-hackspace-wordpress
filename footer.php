@@ -1,14 +1,34 @@
-			<span class="reset"></span></div>
-		</div>
-		<div id="footer_outer">
-			<div id="footer_inner">
-			<p><address>Bristol Hackspace is a trading name of Bristol Open Technology Lab, a company limited by guarantee registered in the UK, company no. 07071572. Registered office: 16b Kingsdown Parade, Bristol, BS6 5UD, UK</address></p>
-			<?php if (is_page() || is_single()) edit_post_link('Edit this page', '<p class="edit_page_link">', '</p>'); ?>
-<!-- 			<p><a href="<?php bloginfo('rss2_url'); ?>">Entries (RSS)</a> | <a href="<?php bloginfo('comments_rss2_url'); ?>">Comments (RSS)</a>.</p> -->
-				<p></p>
 			</div>
-		</div>
-	<?php wp_footer(); ?>
-	<script type = "text/javascript" src = "<?php echo get_bloginfo('template_url');?>/style/js/twitpic-preview.js"></script>
+		</article>
+		<footer>
+			<div class="inner">
+				<?php if (is_page() || is_single()) edit_post_link('Edit this page', '<p class="edit_page_link">', '</p>'); ?>
+				<ul class="footer-links">
+					<li>
+						<span>
+							Hosted by
+							<a href='https://mythic-beasts.com'>
+								Mythic Beasts
+							</a>
+						</span>
+						<a href='https://mythic-beasts.com'>
+							<img src="/wp-content/uploads/2023/05/Mythic_Beasts_logo.png" alt="Mythic Beasts Logo">
+						</a>
+					</li>
+					<li>
+						<span>
+							Hackspace ISP
+							<a href='https://www.aa.net.uk'>
+								Andrews and Arnold
+							</a>
+						</span>
+						<a href='https://www.aa.net.uk'>
+							<img src="/wp-content/uploads/2023/05/Andrews_and_arnold_logo.png" alt="Andrews and Arnold Logo">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+		<?php wp_footer(); ?>
 	</body>
 </html>

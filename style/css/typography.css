@@ -2,7 +2,7 @@
 
 body {
 	font-size:75%;
-	color:#222;
+	color:#333;
 	background:#fff;
 	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -50,8 +50,7 @@ button {font-family: inherit; }
 
 /* BHS Overrides */
 
-a:focus, a:hover {color:#bd6b13;text-decoration:underline;}
-a {color:#f08818;text-decoration:none;}
+a:focus, a:hover {color:#000;text-decoration:underline;}
+a {color:#999;text-decoration:underline;}
 address {color:#eee;}
-#footer_inner {padding-bottom:13px;}
-#footer_outer {background:#666;}
+

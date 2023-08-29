@@ -1,11 +1,11 @@
 /*
-Theme Name: Bristol Hack Space
-Theme URI: http://stefangoodchild.com
+Theme Name: Hack Hitchin
+Theme URI: http://hackhitchin.org.uk
 Version: 1 
-Author: Stefan Goodchild
-Author URI: http://stefangoodchild.com
+Author: Rob Berwick
+Author URI: http://hackhitchin.org.uk
 */
 
-@import "style/css/reset.css";
 @import "style/css/typography.css";
 @import "style/css/layout.css";
+@import "style/css/mailchimp.css";
