@@ -54,3 +54,8 @@ a:focus, a:hover {color:#000;text-decoration:underline;}
 a {color:#999;text-decoration:underline;}
 address {color:#eee;}
 
+/* HH body text styling */
+article p, article li {
+	font-size: 1.25em;
+    line-height: 1.2;
+}
