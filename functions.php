@@ -73,3 +73,70 @@ add_filter('update_themes_github.com', function($update, $theme_data, $theme_sty
    
    return $update;
 }, 10, 4);
+
+function convert_slack_url($url) {
+   // Is it a relative URL?
+   $parsed = parse_url($url);
+   if (array_key_exists('host', $parsed))
+      return $url; // No.
+      
+   return '?path=' . urlencode(str_replace('\\', '/', $url));
+}
+
+function rewrite_slack_html($content) {
+   /* 
+   
+   Turns out, what we get isn't valid HTML.
+
+   --
+
+   $doc = new DOMDocument();
+   $doc->loadHTML($content);
+
+   // Iterate through all the links.
+   foreach ($doc->getElementsByTagName('a') as $link) {
+      $href = $link->attributes['href']->nodeValue;
+
+      // Is it a relative URL?
+      $url = parse_url($href);
+      if (array_key_exists('host', $url))
+         continue; // No.
+         
+      $link->attributes['href']->nodeValue = '?path=' . urlencode(str_replace('\\', '/', $href));
+   }
+   */
+
+   // Okay, let's try something more naive
+   return preg_replace_callback('/<a href="([^"]*)" target="iframe_main">/', function($matches) {
+      $url = convert_slack_url($matches[1]);
+
+      return "<a href=\"$url\" target=\"iframe_main\">";
+   }, $content);
+}
+
+add_shortcode('hh_slack_archives', function($attrs) {
+   // Open the archive and retrieve the page the user's asked for.
+   $archive = new ZipArchive();
+   $archive->open(WP_CONTENT_DIR . '/uploads/slack html archive.zip');
+   $path = get_query_var('path') ?: 'relative menu.html';
+
+   $content = $archive->getFromName($path);
+
+   // Rewrite the links to be relative to the current page.
+   $content = rewrite_slack_html($content);
+   
+   ob_start();
+   ?>
+      <div class="slack-archives">
+         <?= $content ?>
+      </div>
+   <?php
+
+   return ob_get_clean();
+});
+
+add_filter('query_vars', function($query_vars) {
+   $query_vars[] = 'path';
+
+   return $query_vars;
+});
