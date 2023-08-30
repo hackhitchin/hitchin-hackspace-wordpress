@@ -114,17 +114,43 @@ function rewrite_slack_html($content) {
    }, $content);
 }
 
-add_shortcode('hh_slack_archives', function($attrs) {
+function get_slack_archive_content($path) {
+   // Get the archive an admin has uploaded.
+   $archive_id = get_option('hh_slack_archives')['archive_id'] ?? 0;
+
+   // Is there one?
+   if (!$archive_id)
+      throw new Exception('Sorry, the Slack archives are not available at this time.');
+
+   // Try opening it.
    // Open the archive and retrieve the page the user's asked for.
    $archive = new ZipArchive();
-   $archive->open(WP_CONTENT_DIR . '/uploads/slack html archive.zip');
-   $path = get_query_var('path') ?: 'relative menu.html';
+   if ($archive->open(get_attached_file($archive_id)) !== true)
+      throw new Exception('There was a problem opening the Slack archive file.');
 
    $content = $archive->getFromName($path);
+   if ($content === false)
+      throw new Exception('The Slack archive does not contain the requested file.');
 
-   // Rewrite the links to be relative to the current page.
-   $content = rewrite_slack_html($content);
-   
+   return $content;
+}
+
+add_shortcode('hh_slack_archives', function($attrs) {
+   try {
+      // Work out which page the user wants.
+      $path = get_query_var('path') ?: 'relative menu.html';
+
+      // ... then fetch it, if we can.
+      $content = get_slack_archive_content($path);
+
+      // Rewrite the links to be relative to the current page.
+      $content = rewrite_slack_html($content);
+   }
+   catch (Exception $e) {
+      error_log(print_r($e, true));
+      $content = $e->getMessage();
+   }
+
    ob_start();
    ?>
       <div class="slack-archives">
@@ -139,4 +165,65 @@ add_filter('query_vars', function($query_vars) {
    $query_vars[] = 'path';
 
    return $query_vars;
+});
+
+function setting_media($page, $section, $option_group, $key, $name, $description) {
+   $field_id = $option_group . '_' . $key;
+
+   add_settings_field($field_id, $name, function() use ($option_group, $key, $description) {
+      $options = get_option($option_group);
+      $media_id = $options[$key] ?: 0;
+
+      ?>
+         <div class="select-media-container">
+            <input type="hidden" name="<?= $option_group ?>[<?= $key ?>]" value="<?= $media_id ?>">
+            <span><?= $media_id ? basename(get_attached_file($media_id)) : 'None Selected' ?></span>
+            <button class="select-media" onclick="selectMedia(event);">Select File</button>
+         </div>
+         <p><?= $description ?></p>
+      <?php
+   }, $page, $section);
+}
+
+add_action('admin_init', function() {
+   register_setting('general', 'hh_slack_archives', [
+       'default' => [
+           'archive_id' => 0
+       ]
+   ]);
+
+   add_settings_section('hh_slack_archives', 'Slack Archive Viewer', function($args) {
+      wp_enqueue_media();
+      ?>
+         <script>
+            
+            function selectMedia(ev) {
+               ev.preventDefault();
+
+               const el = ev.target;
+               const container = el.closest('.select-media-container');
+               const idInput = container.querySelector('input[type="hidden"]');
+
+               let mediaPicker = wp.media({
+                  title: 'Select or Upload a Slack HTML archive (.zip)',
+                  button: {
+                     text: 'Use this file'
+                  },
+                  multiple: false
+               });
+
+               mediaPicker.on('select', function() {
+                  const selected = mediaPicker.state().get('selection').first().toJSON();
+
+                  idInput.value = selected.id;
+                  container.querySelector('span').innerText = selected.filename;
+               });
+
+               mediaPicker.open();
+            }
+         </script>
+      <?php
+   }, 'general');
+
+   setting_media('general', 'hh_slack_archives', 'hh_slack_archives', 'archive_id', 'Slack Archive file', 'ZIP file containing the Slack archive in HTML format.');
 });
