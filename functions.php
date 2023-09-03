@@ -227,3 +227,42 @@ add_action('admin_init', function() {
 
    setting_media('general', 'hh_slack_archives', 'hh_slack_archives', 'archive_id', 'Slack Archive file', 'ZIP file containing the Slack archive in HTML format.');
 });
+
+function add_img_tabindex($html) {
+   return str_replace('<img', '<img tabindex="0"', $html);
+}
+
+// Make post images focusable.
+add_filter('render_block_core/image', function($html) {
+   return add_img_tabindex($html);
+});
+
+function add_lightbox_legacy($content) {
+   // Find links that contain only a single image.
+   // MT Ugh.
+   $regex = '/<a\s+href="([^"]*)"[^>]*>\s*(<img[^>]*>)\s*<\/a>/';
+
+   return preg_replace_callback($regex, function($matches) {
+      // Add a lightbox style attribute to them.
+      $imageURL = $matches[1];
+      $imageTag = $matches[2];
+
+      // Make the image focusable.
+      $imageTag = add_img_tabindex($imageTag);
+
+      ob_start();
+
+      ?>
+      <div class="has-lightbox">
+         <?= $imageTag ?>
+         <div class="lightbox-container">
+            <img src="<?= $imageURL ?>" />
+         </div>
+      </div>
+      <?php
+
+      return ob_get_clean();
+   }, $content);
+}
+
+add_filter('the_content', function($content) { return add_lightbox_legacy($content); }, 90);
