@@ -1,5 +1,9 @@
 <?php
 
+add_action('wp_enqueue_scripts', function() {
+   wp_enqueue_style('style', get_stylesheet_uri(), [], wp_get_theme()->Version);
+});
+
 register_sidebar([
    'before_widget' => '<li id="%1$s" class="widget %2$s">',
    'after_widget' => '</li>',

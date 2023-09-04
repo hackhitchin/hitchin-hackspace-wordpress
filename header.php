@@ -26,7 +26,6 @@
 			<meta name="robots" content="noindex, nofollow" /> 
 	    <?php } ?>
 	    <link rel="icon" href="/favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" media="screen" />
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 		<link rel="pingback" href="<?php //bloginfo('pingback_url'); ?>" />
 		<?php wp_head(); ?>
